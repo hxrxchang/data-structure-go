@@ -19,8 +19,8 @@ func TestUnshift(t *testing.T) {
 	}
 
 	for i := 0; i < len(expected); i++ {
-		if got[i].Value != expected[i] {
-			t.Fatalf("expected %v, got %v", expected[i], got[i].Value)
+		if got[i] != expected[i] {
+			t.Fatalf("expected %v, got %v", expected[i], got[i])
 		}
 	}
 }
@@ -40,8 +40,8 @@ func TestPush(t *testing.T) {
 	}
 
 	for i := 0; i < len(expected); i++ {
-		if got[i].Value != expected[i] {
-			t.Fatalf("expected %v, got %v", expected[i], got[i].Value)
+		if got[i] != expected[i] {
+			t.Fatalf("expected %v, got %v", expected[i], got[i])
 		}
 	}
 }
@@ -55,9 +55,9 @@ func TestFind(t *testing.T) {
 
 	expected := []int{4, 3, 1, 2}
 	for i := 0; i < 4; i++ {
-		got := *l.Find(i)
-		if got.Value != expected[i] {
-			t.Fatalf("expected %v, got %v", expected[i], got.Value)
+		got, err := l.Find(i)
+		if err != nil || got != expected[i] {
+			t.Fatalf("expected %v, got %v", expected[i], got)
 		}
 	}
 }

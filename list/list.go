@@ -1,10 +1,11 @@
 package list
 
+import "fmt"
+
 type Element[T any] struct {
 	Value T
-	Next *Element[T]
+	Next  *Element[T]
 }
-
 
 type List[T any] struct {
 	First *Element[T]
@@ -15,9 +16,9 @@ func NewList[T any]() *List[T] {
 }
 
 func (l *List[T]) Unshift(value T) {
-	l.First =  &Element[T]{
+	l.First = &Element[T]{
 		Value: value,
-		Next: l.First,
+		Next:  l.First,
 	}
 }
 
@@ -25,7 +26,7 @@ func (l *List[T]) Push(value T) {
 	if l.First == nil {
 		l.First = &Element[T]{
 			Value: value,
-			Next: nil,
+			Next:  nil,
 		}
 	} else {
 		var last *Element[T]
@@ -34,26 +35,27 @@ func (l *List[T]) Push(value T) {
 		}
 		last.Next = &Element[T]{
 			Value: value,
-			Next: nil,
+			Next:  nil,
 		}
 	}
 }
 
-func (l *List[T]) Each() []*Element[T] {
-	var result []*Element[T]
+func (l *List[T]) Each() []T {
+	var result []T
 	for e := l.First; e != nil; e = e.Next {
-		result = append(result, e)
+		result = append(result, e.Value)
 	}
 	return result
 }
 
-func (l *List[T]) Find(idx int) *Element[T] {
+func (l *List[T]) Find(idx int) (T, error) {
 	i := 0
 	for e := l.First; e != nil; e = e.Next {
 		if i == idx {
-			return e
+			return e.Value, nil
 		}
 		i++
 	}
-	return nil
+	var zero T
+	return zero, fmt.Errorf("index out of range")
 }
