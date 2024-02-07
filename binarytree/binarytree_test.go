@@ -10,6 +10,10 @@ func TestBtInt(t *testing.T) {
 	bt.Add(4)
 	bt.Add(5)
 
+	if bt.Root.Value != 3 {
+		t.Fatalf("expected 3, got %v", bt.Root.Value)
+	}
+
 	if bt.Root.Left.Value != 1 {
 		t.Fatalf("expected 1, got %v", bt.Root.Left.Value)
 	}
@@ -34,6 +38,10 @@ func TestBtString(t *testing.T) {
 	bt.Add("b")
 	bt.Add("d")
 	bt.Add("e")
+
+	if bt.Root.Value != "c" {
+		t.Fatalf("expected c, got %v", bt.Root.Value)
+	}
 
 	if bt.Root.Left.Value != "a" {
 		t.Fatalf("expected a, got %v", bt.Root.Left.Value)
