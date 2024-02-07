@@ -60,4 +60,9 @@ func TestFind(t *testing.T) {
 			t.Fatalf("expected %v, got %v", expected[i], got)
 		}
 	}
+
+	_, err := l.Find(4)
+	if err == nil {
+		t.Fatalf("error expected, got nil")
+	}
 }

@@ -57,5 +57,5 @@ func (l *List[T]) Find(idx int) (T, error) {
 		i++
 	}
 	var zero T
-	return zero, fmt.Errorf("index out of range")
+	return zero, fmt.Errorf("index: %d out of range", idx)
 }
