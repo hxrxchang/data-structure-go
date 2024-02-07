@@ -27,9 +27,9 @@ func (b *BinaryTreeMap[T]) Get(key string) (T, error) {
 }
 
 type Node[T any] struct {
-	Key string
+	Key   string
 	Value T
-	Left *Node[T]
+	Left  *Node[T]
 	Right *Node[T]
 }
 

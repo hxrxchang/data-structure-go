@@ -33,7 +33,6 @@ func Test(t *testing.T) {
 		}
 	}
 
-
 	// 上書き
 	h.Set("a", 5)
 	got, err := h.Get("a")

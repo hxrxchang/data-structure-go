@@ -20,7 +20,7 @@ func (b *BinaryTree[T]) Add(value T) {
 
 type Node[T constraints.Ordered] struct {
 	Value T
-	Left *Node[T]
+	Left  *Node[T]
 	Right *Node[T]
 }
 
