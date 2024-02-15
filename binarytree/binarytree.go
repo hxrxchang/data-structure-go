@@ -1,12 +1,11 @@
 package binarytree
 
-import "golang.org/x/exp/constraints"
-
-type BinaryTree[T constraints.Ordered] struct {
+import "cmp"
+type BinaryTree[T cmp.Ordered] struct {
 	Root *Node[T]
 }
 
-func NewBinaryTree[T constraints.Ordered]() *BinaryTree[T] {
+func NewBinaryTree[T cmp.Ordered]() *BinaryTree[T] {
 	return &BinaryTree[T]{}
 }
 
@@ -18,7 +17,7 @@ func (b *BinaryTree[T]) Add(value T) {
 	}
 }
 
-type Node[T constraints.Ordered] struct {
+type Node[T cmp.Ordered] struct {
 	Value T
 	Left  *Node[T]
 	Right *Node[T]
