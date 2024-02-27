@@ -1,6 +1,7 @@
 package binarytree
 
 import "cmp"
+
 type BinaryTree[T cmp.Ordered] struct {
 	Root *Node[T]
 }
